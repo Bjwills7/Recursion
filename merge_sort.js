@@ -15,15 +15,17 @@ function mergeSort(arr) {
         // Sort and merge arrays
         var mergedArr = [];
         
-        while(sorted1.length > 0 || sorted2.length > 0) {
-            if (sorted1[0] <= sorted2[0]) mergedArr.push(sorted1.shift());
-            else if (sorted1[0] >= sorted2[0]) mergedArr.push(sorted2.shift());
-            else if (sorted1[0]) mergedArr.push(sorted1.shift());
-            else if (sorted2[0]) mergedArr.push(sorted2.shift());
+        while(sorted1.length > 0 && sorted2.length > 0) {
+            if (sorted1[0] <= sorted2[0]) {
+                mergedArr.push(sorted1.shift());
+            } else {
+                mergedArr.push(sorted2.shift());
+            } 
         }
-        return mergedArr;
+        // Concat remaining value
+        return mergedArr.concat(sorted1, sorted2);
     }
 }
 
-const myArr = [472, 2, 1, 3, 4, 7, '104'];
+const myArr = [472, 2, 1, 3, 4, 7];
 console.log(mergeSort(myArr));
